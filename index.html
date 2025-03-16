@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBJ Vibes</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #121212, #282828); /* Dark gradient */
+            color: white;
+            display: flex;
+        }
+
+        /* Sidebar - Now Colorful */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1DB954, #007A33);
+            padding: 20px;
+            position: fixed;
+            text-align: center;
+        }
+
+        .sidebar h2 {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #FFBF00; /* Yellow hover effect */
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        /* Hero Section - Colorful Gradient */
+        .hero {
+            text-align: center;
+            padding: 80px;
+            background: linear-gradient(135deg, #ff0080, #ffbf00, #1db954);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        /* Music Grid */
+        .music-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .track {
+            background: linear-gradient(135deg, #ff0080, #ffbf00);
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .track:hover {
+            transform: scale(1.05);
+        }
+
+        .track img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+        }
+
+        /* Music Player - Colorful */
+        .music-player {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #007A33, #1DB954);
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>TBJ Vibes</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About TBJ</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#merch">Merch</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+
+        <section id="home">
+            <div class="hero">
+                <h1>Experience the Sound of TBJ!</h1>
+                <p>Feel the rhythm, listen to the vibes!</p>
+            </div>
+
+            <div class="music-grid">
+                <div class="track">
+                    <img src="your-album-cover.jpg" alt="Album Cover">
+                    <p>Hit Song 1</p>
+                    <audio controls>
+                        <source src="your-song.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <div class="track">
+                    <img src="your-album-cover.jpg" alt="Album Cover">
+                    <p>Hit Song 2</p>
+                    <audio controls>
+                        <source src="your-song.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About TBJ</h2>
+            <p>A brief biography about TBJ, showcasing his musical journey, influences, and achievements.</p>
+        </section>
+
+    </main>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <p>Now Playing: Your Song Name</p>
+        <audio controls>
+            <source src="your-song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+</body>
+
+</html>
