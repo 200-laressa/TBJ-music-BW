@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - TBJ Vibes</title>
+    <title>Sign Up or Log In - TBJ Vibes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -31,6 +31,14 @@
             width: 100%;
             bottom: 0;
         }
+
+        .modal-content {
+            background-color: #1a1a1a;
+        }
+
+        .modal-header, .modal-footer {
+            background-color: #1db954;
+        }
     </style>
 </head>
 <body>
@@ -48,31 +56,46 @@
                 <li class="nav-item"><a class="nav-link" href="music.html">Music</a></li>
                 <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
                 <li class="nav-item"><a class="nav-link" href="playlist.html">Playlists</a></li>
-                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up / Log In</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Sign Up Form -->
-<div class="container form-container">
-    <h2 class="text-center">Sign Up</h2>
-    <form>
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+<!-- Sign Up or Log In Modal -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authModalLabel">Sign Up or Log In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-center">Sign Up / Log In</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <!-- Show password toggle -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="showPassword">
+                        <label class="form-check-label" for="showPassword">Show Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-3">Sign Up / Log In</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn btn-success w-100">Sign Up</button>
-    </form>
+    </div>
 </div>
 
 <!-- Footer -->
@@ -83,5 +106,29 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<!-- Show Password Toggle Script -->
+<script>
+    // Toggle show password
+    document.getElementById('showPassword').addEventListener('change', function () {
+        var passwordField = document.getElementById('password');
+        if (this.checked) {
+            passwordField.type = 'text'; // Show password
+        } else {
+            passwordField.type = 'password'; // Hide password
+        }
+    });
+
+    // Show modal when page loads (you can remove this for production)
+    window.onload = function() {
+        var myModal = new bootstrap.Modal(document.getElementById('authModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    }
+</script>
+
 </body>
 </html>
+
+   
