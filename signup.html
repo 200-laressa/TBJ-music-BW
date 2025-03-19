@@ -39,6 +39,15 @@
         .modal-header, .modal-footer {
             background-color: #1db954;
         }
+
+        .text-danger {
+            font-size: 0.9rem;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
@@ -68,31 +77,56 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="authModalLabel">Sign Up or Log In</h5>
+                <h5 class="modal-title" id="authModalLabel">Sign Up / Log In</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <h2 class="text-center">Sign Up / Log In</h2>
-                <form>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                    </div>
-                    <!-- Show password toggle -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="showPassword">
-                        <label class="form-check-label" for="showPassword">Show Password</label>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100 mt-3">Sign Up / Log In</button>
-                </form>
+            <div class="modal-body" id="authFormContainer">
+                <!-- Sign Up Form -->
+                <div id="signUpForm">
+                    <h2 class="text-center">Sign Up</h2>
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                            <div id="passwordError" class="text-danger" style="display: none;">Passwords do not match</div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="showPassword">
+                            <label class="form-check-label" for="showPassword">Show Password</label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-3">Sign Up</button>
+                    </form>
+                    <p class="text-center mt-2">Already have an account? <a href="#" id="showLoginForm">Log In</a></p>
+                </div>
+
+                <!-- Log In Form (Initially hidden) -->
+                <div id="logInForm" style="display: none;">
+                    <h2 class="text-center">Log In</h2>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-3">Log In</button>
+                    </form>
+                    <p class="text-center mt-2">Don't have an account? <a href="#" id="showSignUpForm">Sign Up</a></p>
+                </div>
             </div>
         </div>
     </div>
@@ -112,10 +146,13 @@
     // Toggle show password
     document.getElementById('showPassword').addEventListener('change', function () {
         var passwordField = document.getElementById('password');
+        var confirmPasswordField = document.getElementById('confirmPassword');
         if (this.checked) {
             passwordField.type = 'text'; // Show password
+            confirmPasswordField.type = 'text'; // Show confirm password
         } else {
             passwordField.type = 'password'; // Hide password
+            confirmPasswordField.type = 'password'; // Hide confirm password
         }
     });
 
@@ -126,11 +163,63 @@
         });
         myModal.show();
     }
+
+    // Switch to Sign Up Form
+    document.getElementById('showSignUpForm').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('logInForm').style.display = 'none';
+        document.getElementById('signUpForm').style.display = 'block';
+    });
+
+    // Switch to Log In Form
+    document.getElementById('showLoginForm').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('signUpForm').style.display = 'none';
+        document.getElementById('logInForm').style.display = 'block';
+    });
+
+    // Sign Up Form validation and submission
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            document.getElementById('passwordError').style.display = 'block'; // Show error message
+            return;
+        }
+
+        document.getElementById('passwordError').style.display = 'none'; // Hide error message if passwords match
+
+        // Simulate successful sign-up
+        alert('Signed Up Successfully');
+        var myModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+        myModal.hide(); // Close the modal
+    });
+
+    // Log In Form submission (example, you can add actual login functionality)
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var username = document.getElementById('loginUsername').value;
+        var password = document.getElementById('loginPassword').value;
+
+        // Example log-in validation (this can be replaced with actual back-end logic)
+        if (username && password) {
+            alert('Logged in Successfully');
+            var myModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+            myModal.hide(); // Close the modal
+        } else {
+            alert('Please fill in both fields');
+        }
+    });
 </script>
 
 </body>
 </html>
 
-        
-  
-    
+      
+
+ 
