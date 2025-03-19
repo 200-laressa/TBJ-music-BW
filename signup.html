@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TBJ Vibes - Sign Up or Log In</title>
+    <title>Sign Up or Log In - TBJ Vibes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
             color: white;
-            display: none; /* Hide body content initially */
         }
 
         .navbar {
-            background-color: #2c2c2c;
+            background-color: #1db954;
         }
 
         .form-container {
@@ -47,7 +46,7 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">TBJ Vibes</a>
+        <a class="navbar-brand" href="index.html">TBJ Vibes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,7 +56,7 @@
                 <li class="nav-item"><a class="nav-link" href="music.html">Music</a></li>
                 <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
                 <li class="nav-item"><a class="nav-link" href="playlist.html">Playlists</a></li>
-                <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up / Log In</a></li>
+                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up / Log In</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -73,60 +72,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs" id="authTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="signupTab" data-bs-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="true">Sign Up</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="loginTab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="false">Log In</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="authTabContent">
-                    <!-- Sign Up Form -->
-                    <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signupTab">
-                        <h2 class="text-center">Sign Up</h2>
-                        <form>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                            </div>
-                            <!-- Show password toggle -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="showPassword">
-                                <label class="form-check-label" for="showPassword">Show Password</label>
-                            </div>
-                            <button type="submit" class="btn btn-success w-100 mt-3">Sign Up</button>
-                        </form>
+                <h2 class="text-center">Sign Up / Log In</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
                     </div>
-                    <!-- Log In Form -->
-                    <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="loginTab">
-                        <h2 class="text-center">Log In</h2>
-                        <form>
-                            <div class="mb-3">
-                                <label for="loginEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="loginPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
-                            </div>
-                            <!-- Show password toggle -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="showLoginPassword">
-                                <label class="form-check-label" for="showLoginPassword">Show Password</label>
-                            </div>
-                            <button type="submit" class="btn btn-success w-100 mt-3">Log In</button>
-                        </form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <!-- Show password toggle -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="showPassword">
+                        <label class="form-check-label" for="showPassword">Show Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-3">Sign Up / Log In</button>
+                </form>
             </div>
         </div>
     </div>
@@ -143,7 +109,7 @@
 
 <!-- Show Password Toggle Script -->
 <script>
-    // Toggle show password for Sign Up
+    // Toggle show password
     document.getElementById('showPassword').addEventListener('change', function () {
         var passwordField = document.getElementById('password');
         if (this.checked) {
@@ -153,39 +119,18 @@
         }
     });
 
-    // Toggle show password for Log In
-    document.getElementById('showLoginPassword').addEventListener('change', function () {
-        var passwordField = document.getElementById('loginPassword');
-        if (this.checked) {
-            passwordField.type = 'text'; // Show password
-        } else {
-            passwordField.type = 'password'; // Hide password
-        }
-    });
-
-    // Show modal on page load and wait until user interacts with it
+    // Show modal when page loads (you can remove this for production)
     window.onload = function() {
         var myModal = new bootstrap.Modal(document.getElementById('authModal'), {
             keyboard: false
         });
         myModal.show();
     }
-
-    // Once user submits the form (sign up or login), allow them to access the page
-    document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        // Simulate successful sign-up/log-in, and then show the page content
-        document.body.style.display = 'block'; // Show the body content
-        var myModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
-        myModal.hide(); // Close the modal
-    });
 </script>
 
 </body>
 </html>
 
-     
-                      
-
+        
   
-       
+    
