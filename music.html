@@ -38,6 +38,11 @@
             width: 100%;
             bottom: 0;
         }
+
+        audio {
+            width: 100%; /* Makes the audio player take up the full width of its container */
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -75,18 +80,48 @@
             <div class="category">
                 <h3>Pop</h3>
                 <p>Enjoy the latest hits in pop music.</p>
+                <!-- Audio Player for Pop Music -->
+                <audio controls>
+                    <source src="https://raw.githubusercontent.com/yourusername/yourrepository/main/assets/pop-song.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
         <div class="col-md-4">
             <div class="category">
                 <h3>Rock</h3>
                 <p>For all rock lovers, we've got the best tracks.</p>
+                <!-- Audio Player for Rock Music -->
+                <audio controls>
+                    <source src="https://raw.githubusercontent.com/yourusername/yourrepository/main/assets/rock-song.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
         <div class="col-md-4">
             <div class="category">
                 <h3>Hip-Hop</h3>
                 <p>Listen to the best in hip-hop and rap.</p>
+                <!-- Audio Player for Hip-Hop Music -->
+                <audio controls>
+                    <source src="https://raw.githubusercontent.com/yourusername/yourrepository/main/assets/hiphop-song.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Category (Optional for 4th Music) -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="category">
+                <h3>Jazz</h3>
+                <p>Relax with smooth jazz tracks.</p>
+                <!-- Audio Player for Jazz Music -->
+                <audio controls>
+                    <source src="https://raw.githubusercontent.com/yourusername/yourrepository/main/assets/jazz-song.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         </div>
     </div>
