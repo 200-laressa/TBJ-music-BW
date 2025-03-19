@@ -40,10 +40,6 @@
         .modal-header, .modal-footer {
             background-color: #1db954;
         }
-
-        .text-danger {
-            font-size: 0.9rem;
-        }
     </style>
 </head>
 <body>
@@ -89,7 +85,7 @@
                     <!-- Sign Up Form -->
                     <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signupTab">
                         <h2 class="text-center">Sign Up</h2>
-                        <form id="signupForm">
+                        <form>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
@@ -102,11 +98,6 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
-                                <div id="passwordError" class="text-danger" style="display: none;">Passwords do not match</div>
-                            </div>
                             <!-- Show password toggle -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="showPassword">
@@ -118,7 +109,7 @@
                     <!-- Log In Form -->
                     <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="loginTab">
                         <h2 class="text-center">Log In</h2>
-                        <form id="loginForm">
+                        <form>
                             <div class="mb-3">
                                 <label for="loginEmail" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
@@ -155,13 +146,10 @@
     // Toggle show password for Sign Up
     document.getElementById('showPassword').addEventListener('change', function () {
         var passwordField = document.getElementById('password');
-        var confirmPasswordField = document.getElementById('confirmPassword');
         if (this.checked) {
             passwordField.type = 'text'; // Show password
-            confirmPasswordField.type = 'text'; // Show confirm password
         } else {
             passwordField.type = 'password'; // Hide password
-            confirmPasswordField.type = 'password'; // Hide confirm password
         }
     });
 
@@ -183,32 +171,10 @@
         myModal.show();
     }
 
-    // Sign up form validation and submission
-    document.getElementById('signupForm').addEventListener('submit', function(event) {
+    // Once user submits the form (sign up or login), allow them to access the page
+    document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
-
-        var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirmPassword').value;
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            document.getElementById('passwordError').style.display = 'block'; // Show error message
-            return;
-        }
-
-        document.getElementById('passwordError').style.display = 'none'; // Hide error message if passwords match
-
-        // Simulate successful sign-up, then show the page content
-        document.body.style.display = 'block'; // Show the body content
-        var myModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
-        myModal.hide(); // Close the modal
-    });
-
-    // Log in form submission (no validation in this case)
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Simulate successful login, then show the page content
+        // Simulate successful sign-up/log-in, and then show the page content
         document.body.style.display = 'block'; // Show the body content
         var myModal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
         myModal.hide(); // Close the modal
@@ -217,3 +183,9 @@
 
 </body>
 </html>
+
+     
+                      
+
+  
+       
